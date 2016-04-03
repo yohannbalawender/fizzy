@@ -1,0 +1,22 @@
+{
+    "version": 0,
+    "env": "dev",
+    "db": {
+        "dsn": "mysql:host=localhost;dbname=fdb;charset=utf8",
+        "username": "root",
+        "password": ""
+    },
+    "deps": [{
+        "name": "defaults",
+        "require": {
+            "js": ["underscore", "jquery", "bootstrap"],
+            "css": ["knacss", "bootstrap", "header"]
+        }
+    }, {
+        "name": "home",
+        "require": {
+            "js": [],
+            "css": []
+        }
+    }]
+}
