@@ -10,11 +10,22 @@ require_once 'core/models/post.php';
 class Posts extends Collection {
     public $models = array();
 
-    public function fetch() {
+    public function fetch($conds = '', $values = array()) {
         $this->_isFetched = false;
 
         $q = Query::getInstance();
-        $stmt = $q->prepare('SELECT * FROM posts');
+        
+        $sql = 'SELECT * FROM posts';
+
+        if (!empty($conds)) {
+            $sql = sprintf('%s %s', $sql, $conds);
+        }
+
+        $stmt = $q->prepare($sql);
+
+        foreach ($values as $key => $value) {
+            $stmt->bindParam(':' . $key, $value, PDO::PARAM_INT);
+        }
 
         try {
             $stmt->execute();

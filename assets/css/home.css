@@ -1,0 +1,54 @@
+/* Main style */
+/* Variables */
+/* Colors */
+/* Margin & Padding */
+/* Style */
+/* Utils factory */
+/* Less Bundle */
+/* Main style */
+#banner {
+  background: #f7f7f7;
+}
+#banner div,
+nav {
+  float: left;
+  padding: 20px;
+}
+#banner .fizzy-title {
+  font-size: 21px;
+}
+nav.main-nav {
+  padding: 20px;
+}
+nav.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav.main-nav ul li {
+  padding: 0 30px;
+}
+nav.main-nav a {
+  text-decoration: none;
+  font-size: 21px;
+}
+nav.main-nav span {
+  font-size: 26.25px;
+}
+nav.main-nav a,
+span {
+  color: #524c4c;
+}
+#banner:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/* Main style */
+footer div a {
+  text-decoration: none;
+  color: #524c4c;
+}
+#app-container {
+  background-color: #ecedec;
+}

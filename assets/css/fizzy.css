@@ -1,0 +1,80 @@
+/**
+ * Fizzy main style file
+ */
+/* Variables */
+/* Colors */
+/* Margin & Padding */
+/* Style */
+/* Utils factory */
+@font-face {
+  font-family: "Open sans";
+  src: url('../fonts/open-sans.regular.ttf');
+}
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Oswald", "Open sans", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+a,
+span {
+  color: #524c4c;
+}
+header {
+  background: #f7f7f7;
+  overflow: hidden;
+}
+#banner {
+  overflow: hidden;
+}
+#banner div,
+#banner nav {
+  float: left;
+  padding: 20px;
+}
+#banner .fizzy-title {
+  background-color: #96cdcd;
+  width: 100px;
+  text-align: center;
+}
+#banner .fizzy-title span {
+  font-size: 21px;
+  color: #e7e7e7;
+}
+#banner :after {
+  content: '';
+  display: block;
+  clear: both;
+}
+nav.main-nav {
+  padding: 20px;
+}
+nav.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav.main-nav ul li {
+  padding: 0 30px;
+}
+nav.main-nav ul a {
+  text-decoration: none;
+  font-size: 21px;
+}
+nav.main-nav ul span {
+  font-size: 26.25px;
+}
+footer {
+  background-color: #1f1f1f;
+  color: #e7e7e7;
+  text-align: center;
+}
+footer p {
+  padding: 5px;
+}
+footer * {
+  color: #e7e7e7;
+}

@@ -1,0 +1,91 @@
+/**
+ * Fizzy main style file
+ */
+
+@import "variables.less";
+@import "utils.less";
+
+@font-face {
+    font-family: "Open sans";
+    src: url('../fonts/open-sans.regular.ttf');
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Oswald", "Open sans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, span {
+    color: @link-color;
+}
+
+header {
+    background: @light-bg;
+    overflow: hidden;
+}
+
+#banner {
+    overflow: hidden;
+
+    div, nav {
+        float: left;
+        padding: @min-gutter;
+    }
+
+    .fizzy-title {
+        background-color: @app-color;
+        width: 100px;
+        text-align: center;
+
+        span {
+            font-size: 21px;
+            color: @light-color;
+        }
+    }
+    
+    :after {
+        .clear_after();
+    }
+}
+
+nav.main-nav {
+    padding: @min-gutter;
+
+    ul {
+        .no_list();
+
+        li {
+            padding: 0 @nav-gutter;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: @title-font-size;
+        }
+
+        span {
+            font-size: @title-font-size * 1.25;
+        }
+    }
+}
+
+footer {
+    background-color: @dark-bg;
+    color: @light-color;
+
+    text-align: center;
+}
+
+footer p {
+    padding: 5px;
+}
+
+footer * {
+    color: @light-color;
+}

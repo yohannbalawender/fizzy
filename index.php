@@ -5,10 +5,16 @@ require 'ext/slim/Slim/Slim.php';
 require 'ext/underscore-php/underscore.php';
 require 'core/fdate.php';
 
+require_once 'core/utils.php';
 require_once 'core/query.php';
+require_once 'core/models/post.php';
+require_once 'core/collections/posts.php';
 
 /* To remove in prod */
 error_reporting(E_ALL & ~E_STRICT);
+
+/* Const */
+define('ROOT_PATH', 'http://fizzy.local/');
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
@@ -36,51 +42,67 @@ Query::define($db['dsn'], $db['username'], $db['password']);
 /* Assets dependencies */
 $deps = $cf['deps'];
 
-$defaults = __::find($deps, function($dep) {
-    return $dep['name'] === 'defaults';
-});
-
 /* Slim App Delegator */
 $delegator = array(
     'app' => $app,
-    'deps' => $deps,
-    'defaults' => $defaults
+    'deps' => $deps
 );
 
 /* home */
 $app->get('/', function () use ($delegator) {
     $app = $delegator['app'];
     $deps = $delegator['deps'];
-    $defaults = $delegator['defaults'];
 
-    $localDeps = __::find($deps, function($dep) {
-        return $dep['name'] === 'home';
-    });
+    $deps = Utils::getAllDeps($deps, 'home');
 
-    $requires = $localDeps['require'];
+    $require = $deps['require'];
 
     $app->render('/header.php', array(
         'title' => 'Home',
-        'css' => $requires['css']
+        'css' => $require['css']
     ));
 
     $app->render('/home.php');
 
     $app->render('/footer.php', array(
-        'js' => $requires['js'])
+        'js' => $require['js'])
     );
 })->name('home');
 
-/* $app->get('/posts', function() use ($delegator) {
+$app->get('/posts(/(:id))', function($id = null) use ($delegator) {
     $app = $delegator['app'];
-    $files = $delegator['files'];
+    $deps = $delegator['deps'];
 
-	$app->render('core/list.php', array(
-		'db' => $delegator['db'],
-		'collection' => 'stopovers',
-		'parameters' => array()
-	));
-}); */
+    $deps = Utils::getAllDeps($deps, 'posts');
+
+    $require = $deps['require'];
+
+    $app->render('/header.php', array(
+        'title' => 'Posts',
+        'css' => $require['css']
+    ));
+
+    $posts = new Posts();
+
+    $conds = '';
+    $values = array();
+
+    if (!is_null($id)) {
+        $conds = 'WHERE Id = :id';
+
+        $values = array('id' => $id);
+    }
+
+    $posts->fetch($conds, $values);
+
+    $app->render('/posts.php', array(
+        'posts' => $posts
+    ));
+
+    $app->render('/footer.php', array(
+        'js' => $require['js'])
+    );
+})->name('posts');
 
 /* mandatory, do not overwrite */
 

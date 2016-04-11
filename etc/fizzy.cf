@@ -9,13 +9,19 @@
     "deps": [{
         "name": "defaults",
         "require": {
-            "js": ["underscore", "jquery", "bootstrap"],
-            "css": ["knacss", "bootstrap", "header"]
+            "js": [],
+            "css": ["knacss", "bootstrap", "fizzy"]
         }
     }, {
         "name": "home",
         "require": {
-            "js": [],
+            "js": ["home"],
+            "css": []
+        }
+    }, {
+        "name": "posts",
+        "require": {
+            "js": ["posts"],
             "css": []
         }
     }]

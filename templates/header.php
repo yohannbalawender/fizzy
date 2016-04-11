@@ -110,17 +110,17 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
     <link rel="stylesheet" href="assets/css/home.css">-->
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <?php
         foreach ($css as $file) {
-            $path = 'css/' . $file . '.css';
-            $fullPath = "$path?". filemtime($path);
-
+            $path = 'assets/css/' . $file . '.css';
+            $args = "$path?". filemtime($path);
+            $fullPath = ROOT_PATH . $path;
         ?>
-            <link rel="stylesheet" media="screen" type="text/css" title="Style" 
-                        href="<?php echo $fullPath; ?>" />
+            <link rel="stylesheet" media="screen" type="text/css" title="Style" href="<?php echo $fullPath; ?>" />
         <?php
         }
     ?>
@@ -193,16 +193,22 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
             <nav class="main-nav">
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item">
-                        <span class="fa fa-html5"></span>
-                        <a href="https://www.example.com/web">Web</a>
+                        <a href="<?php echo ROOT_PATH . 'web'?>">
+                            <span class="fa fa-html5"></span>
+                            &nbsp; Web
+                        </a>
                     </li>
                     <li class="pure-menu-item">
-                        <span class="fa fa-heart"></span>
-                        <a href="https://www.example.com/life">Life</a>
+                        <a href="<?php echo ROOT_PATH . 'life'?>">
+                            <span class="fa fa-heart"></span>
+                            &nbsp; Life
+                        </a>
                     </li>
                     <li class="pure-menu-item">
-                        <span class="fa fa-pencil"></span>
-                        <a href="https://www.example.com/projects">Projects</a>
+                        <a href="<?php echo ROOT_PATH . 'music'?>">
+                            <span class="fa fa-music"></span>
+                            &nbsp; Music
+                        </a>
                     </li>
                 </ul>
             </nav>

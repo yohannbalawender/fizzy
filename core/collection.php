@@ -7,11 +7,21 @@ abstract class Collection {
     /* Must be overriden */
     protected $_isFetched = false;
     protected $models;
+
+    public $order = null;
+    public $offset = null;
+    public $limit = null;
     public $stackErrors;
 
     public function __construct() {
     }
 
+    /**
+     * Retrieve a model from collection
+     * 
+     * @param  [Integer] $index Search for a model at given index
+     * @return [core/Model|False] Return a model if found, otherwise false
+     */
     public function at($index) {
         if ($index > count($this->models)) {
             return false;
@@ -20,6 +30,11 @@ abstract class Collection {
         return $this->models[$index];
     }
 
+    /**
+     * Push given model into collection
+     * 
+     * @param  [core/Model] $model Model to add to collection
+     */
     public function push($model) {
         $this->models[] = $model;
     }
