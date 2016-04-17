@@ -19,6 +19,9 @@ define('ROOT_PATH', 'http://fizzy.local/');
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
 
+/* To remove in prod */
+$app->config('debug', true);
+
 $confName = 'etc/fizzy.cf';
 
 if (!file_exists($confName)) {
@@ -58,7 +61,7 @@ $app->get('/', function () use ($delegator) {
     $require = $deps['require'];
 
     $app->render('/header.php', array(
-        'title' => 'Home',
+        'title' => 'Hello',
         'css' => $require['css']
     ));
 
@@ -69,18 +72,9 @@ $app->get('/', function () use ($delegator) {
     );
 })->name('home');
 
-$app->get('/posts(/(:id))', function($id = null) use ($delegator) {
+$app->map('/posts(/(:id))', function($id = null) use ($delegator) {
     $app = $delegator['app'];
     $deps = $delegator['deps'];
-
-    $deps = Utils::getAllDeps($deps, 'posts');
-
-    $require = $deps['require'];
-
-    $app->render('/header.php', array(
-        'title' => 'Posts',
-        'css' => $require['css']
-    ));
 
     $posts = new Posts();
 
@@ -95,14 +89,50 @@ $app->get('/posts(/(:id))', function($id = null) use ($delegator) {
 
     $posts->fetch($conds, $values);
 
-    $app->render('/posts.php', array(
-        'posts' => $posts
+    echo $posts->toJson();
+})->via('GET', 'POST')->name('posts');
+
+$getAsset = function($route) use ($delegator) {
+    $app = $delegator['app'];
+
+    /* Check if not asking for an asset file */
+    $params = $route->getParams();
+    $asset = implode('/', array_pop($params));
+    
+    if (file_exists($path)) {
+        $app->halt(200, file_get_contents($path));
+    } else {
+        $app->pass();
+    }
+};
+
+$unknownRoute = function($unk) use ($delegator) {
+    $app = $delegator['app'];
+    $deps = $delegator['deps'];
+
+    $deps = __::find($deps, function($dep) {
+        return $dep['name'] === 'defaults';
+    });
+
+    $require = $deps['require'];
+
+    $app->render('/header.php', array(
+        'title' => 'Not found',
+        'css' => $require['css']
+    ));
+
+    $app->render('404.php', array(
+        'page' => implode('/', $unk)
     ));
 
     $app->render('/footer.php', array(
-        'js' => $require['js'])
-    );
-})->name('posts');
+        'js' => $require['js']
+    ));
+};
+
+/* Wildcard to catch 404.
+ * Always the last route to declare */
+$app->map('/:unk+', $getAsset, $unknownRoute)->via('GET')->name('unknown');
 
 /* mandatory, do not overwrite */
 

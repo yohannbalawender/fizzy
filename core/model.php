@@ -4,6 +4,8 @@
  * @var Abstract
  */
 abstract class Model {
+    public static $name = null;
+
     /* Must be overriden */
     protected static $keys;
 
@@ -14,6 +16,10 @@ abstract class Model {
     public function __construct() {
         if (!is_array(static::$keys) || empty(static::$keys)) {
             throw new Exception("Excepted keys model to be an non-array.");
+        }
+
+        if (is_null(static::$name)) {
+            throw new Exception("Expected name model not to be null.");
         }
     }
 
@@ -61,6 +67,18 @@ abstract class Model {
         }
 
         return array($exec, implode(', ', $params));
+    }
+
+    public function toJson() {
+        $json = json_encode($this->attr);
+
+        $json['__url__'] = static::$name;
+
+        return $json;
+    }
+
+    public function getAttrs() {
+        return $this->attr;
     }
 }
 

@@ -6,10 +6,9 @@ define(function(require) {
     'use strict';
 
     var Backbone = require('backbone');
-    var MainTpl = require('text!html/home/Main.html');
 
     /* Views */
-    var Main = require('views/home/Main');
+    var Entry = require('views/home/Entry');
 
     return Backbone.Router.extend({
 
@@ -18,11 +17,11 @@ define(function(require) {
         },
 
         main: function() {
-            this.show(new Main());
+            this.show(new Entry());
         },
 
         show: function(view) {
-            $('#main-app').append(view.render().el);
+            $('#app-container').append(view.render().el);
         }
 
     });

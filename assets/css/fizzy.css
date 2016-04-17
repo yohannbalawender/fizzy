@@ -18,9 +18,6 @@ body {
 }
 a {
   text-decoration: none;
-}
-a,
-span {
   color: #524c4c;
 }
 header {
@@ -77,4 +74,10 @@ footer p {
 }
 footer * {
   color: #e7e7e7;
+}
+#app-container {
+  min-height: 400px;
+}
+.not-found {
+  padding: 10px;
 }

@@ -2,7 +2,7 @@
  * Home page point entry
  */
 
-require([], function() {
+require(['common'], function() {
     'use strict';
 
     require(['routers/home'], function(Router) {

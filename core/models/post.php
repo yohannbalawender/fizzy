@@ -7,6 +7,8 @@ require_once 'core/model.php';
  * Post model
  */
 class Post extends Model {
+    public static $name = 'posts';
+
     protected static $keys = array('Id');
 
     protected $attr;

@@ -19,9 +19,6 @@ body {
 
 a {
     text-decoration: none;
-}
-
-a, span {
     color: @link-color;
 }
 
@@ -80,12 +77,20 @@ footer {
     color: @light-color;
 
     text-align: center;
+
+    p {
+        padding: 5px;
+    }
+
+    * {
+        color: @light-color;
+    }
 }
 
-footer p {
-    padding: 5px;
+#app-container {
+    min-height: 400px;
 }
 
-footer * {
-    color: @light-color;
+.not-found {
+    padding: 10px;
 }

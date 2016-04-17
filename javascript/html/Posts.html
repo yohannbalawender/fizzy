@@ -1,0 +1,25 @@
+<!--
+    Template for posts
+-->
+
+<% posts.each(function(post) { %>
+    <div class="post">
+        <ul>
+            <li class="avatar">
+                <%- post.get('Avatar') %>
+            </li>
+            <li class="author">
+                <%- post.get('Author') %>
+            </li>
+            <li class="pub-date">
+                <%- post.get('CreationDate') %>
+            </li>
+            <li class="comments">
+                <%- post.get('NbComments') %>
+            </li>
+            <li class="popularity">
+                <%- post.get('Hot') %>
+            </li>
+        </ul>
+    </div>
+<% }); %>

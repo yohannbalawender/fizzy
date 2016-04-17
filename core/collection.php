@@ -4,9 +4,11 @@
  * @var Abstract
  */
 abstract class Collection {
+    public static $name = null;
+
     /* Must be overriden */
     protected $_isFetched = false;
-    protected $models;
+    public $models;
 
     public $order = null;
     public $offset = null;
@@ -14,6 +16,9 @@ abstract class Collection {
     public $stackErrors;
 
     public function __construct() {
+        if (is_null(static::$name)) {
+            throw new Exception("Expected name collection not to be null.");
+        }
     }
 
     /**
@@ -54,6 +59,16 @@ abstract class Collection {
         if (!$this->_isFetched) {
             throw new Exception('Fail because collection is unfetched.');
         }
+    }
+
+    public function toJson() {
+        $json = array_map(function($model) {
+            return $model->getAttrs();
+        }, $this->models);
+
+        $json['__url__'] = static::$name;
+
+        return json_encode($json);
     }
 }
 

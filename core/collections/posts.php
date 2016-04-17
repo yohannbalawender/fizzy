@@ -8,6 +8,8 @@ require_once 'core/models/post.php';
  * Post model
  */
 class Posts extends Collection {
+    public static $name = 'posts';
+
     public $models = array();
 
     public function fetch($conds = '', $values = array()) {
