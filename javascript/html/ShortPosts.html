@@ -1,0 +1,35 @@
+<!--
+    Template for posts
+-->
+
+<div class="posts-container row">
+    <% posts.each(function(post, index) { %>
+        <% if (!(index % 3) && index !== 0) { %>
+            </div>
+            <div class="posts-container row">
+        <% } %>
+
+        <% var title = post.get('Title') || 'Unknown'; %>
+        <% var img = post.get('Image') || 'default-fizzy.jpg' %>
+        <% var avatar = post.get('Avatar') || 'efferv.jpg' %>
+
+        <div class="pane short-post-container col-md-4">
+            <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
+            <h2><%- title %></h2>
+            <div class="info row">
+                <div class="author-info col-md-5">
+                    <img class="avatar" src="/assets/images/avatars/<%- avatar %>" alt="Avatar" />
+                    <div class="f-hidden author"><%- post.get('Author') %></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="tags">
+                        <%- post.get('Tags') || '-' %>
+                    </div>
+                    <div class="community">
+                        <span class="fa fa-thumbs-o-up"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>

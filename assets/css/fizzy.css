@@ -5,6 +5,7 @@
 /* Colors */
 /* Margin & Padding */
 /* Style */
+/* Images */
 /* Utils factory */
 @font-face {
   font-family: "Open sans";
@@ -12,57 +13,36 @@
 }
 body {
   width: 100%;
-  padding: 0;
-  margin: 0;
+  height: 100%;
   font-family: "Oswald", "Open sans", sans-serif;
+  font-size: 14px;
+}
+body > * {
+  width: 100%;
 }
 a {
   text-decoration: none;
   color: #524c4c;
 }
-header {
-  background: #f7f7f7;
-  overflow: hidden;
+/* Bootstrap adapter {{{ */
+.row {
+  margin-right: 0;
+  margin-left: 0;
 }
+/* }}} */
 #banner {
   overflow: hidden;
 }
-#banner div,
-#banner nav {
-  float: left;
-  padding: 20px;
-}
-#banner .fizzy-title {
+#banner .f-header {
   background-color: #96cdcd;
-  width: 100px;
-  text-align: center;
+  padding: 0 20px;
 }
-#banner .fizzy-title span {
-  font-size: 21px;
+#banner .f-header .f-title {
+  font-size: 26.25px;
   color: #e7e7e7;
 }
-#banner :after {
-  content: '';
-  display: block;
-  clear: both;
-}
-nav.main-nav {
-  padding: 20px;
-}
-nav.main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-nav.main-nav ul li {
-  padding: 0 30px;
-}
-nav.main-nav ul a {
-  text-decoration: none;
+#banner .f-nav {
   font-size: 21px;
-}
-nav.main-nav ul span {
-  font-size: 26.25px;
 }
 footer {
   background-color: #1f1f1f;
@@ -77,7 +57,55 @@ footer * {
 }
 #app-container {
   min-height: 400px;
+  width: 100%;
+  margin: 20px 0;
 }
-.not-found {
-  padding: 10px;
+#app-container > * {
+  width: 100%;
+}
+/**
+ * Style for short post
+ */
+.posts-container {
+  width: 100%;
+}
+.posts-container .short-post-container {
+  padding: 15px;
+  border-bottom: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+}
+.posts-container .short-post-container .img {
+  width: 100%;
+}
+.posts-container .short-post-container .info {
+  margin-top: 15px;
+}
+.posts-container .short-post-container .info .author-info {
+  content: '';
+  display: block;
+  clear: both;
+}
+.posts-container .short-post-container .info .author-info .avatar {
+  width: 40px;
+  height: 40px;
+  float: left;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+.posts-container .short-post-container .info .author-info .avatar:hover {
+  border: 3px solid #96cdcd;
+}
+.posts-container .short-post-container .info .author-info .author {
+  display: none;
+  float: left;
+  margin-left: 15px;
+  margin-top: 6px;
+}
+.posts-container .short-post-container .info .tags {
+  font-style: italic;
+  text-align: right;
+  color: #999999;
+}
+.posts-container .short-post-container .info .community {
+  text-align: right;
 }

@@ -2,7 +2,7 @@
  * Backbone core module
  */
 
-define('core', ['backbone', 'sync', 'model', 'collection'], function(Backbone, sync) {
+define('core', ['backbone', 'sync', 'model', 'collection'], function(Backbone, sync, parse) {
     'use strict';
 
     var backboneSync = Backbone.sync;
@@ -28,15 +28,27 @@ define('model', ['backbone', 'underscore'], function(Backbone, _) {
     _.extend(model.prototype, Backbone.Model.prototype);
 
     Backbone.Model = model;
+
+    return model;
 });
 
-define('collection', ['backbone'], function(Backbone) {
+define('collection', ['backbone', 'underscore'], function(Backbone, _) {
     'use strict';
 
     var backboneCollection = Backbone.Collection;
 
+    var parse = function(resp, options) {
+        if (!_.isArray(resp)) {
+            return _.map(resp);
+        }
+
+        return resp;
+    };
+
     var collection = function(fullName, models, options) {
         this.__url__ = fullName;
+
+        this.parse = parse;
 
         backboneCollection.call(this, models, options);
     }
@@ -44,4 +56,6 @@ define('collection', ['backbone'], function(Backbone) {
     _.extend(collection.prototype, Backbone.Collection.prototype);
 
     Backbone.Collection = collection;
+
+    return collection;
 });

@@ -65,14 +65,12 @@ $app->get('/', function () use ($delegator) {
         'css' => $require['css']
     ));
 
-    $app->render('/home.php');
-
     $app->render('/footer.php', array(
         'js' => $require['js'])
     );
 })->name('home');
 
-$app->map('/posts(/(:id))', function($id = null) use ($delegator) {
+$app->map('/req/posts(/(:id))', function($id = null) use ($delegator) {
     $app = $delegator['app'];
     $deps = $delegator['deps'];
 
@@ -97,10 +95,15 @@ $getAsset = function($route) use ($delegator) {
 
     /* Check if not asking for an asset file */
     $params = $route->getParams();
+    $domain = $params['unk'][0];
     $asset = implode('/', array_pop($params));
-    
-    if (file_exists($path)) {
-        $app->halt(200, file_get_contents($path));
+
+    if ($domain === 'assets') {
+        if (file_exists($asset)) {
+            $app->halt(200, file_get_contents($asset));
+        } else {
+            $app->halt(404);
+        }
     } else {
         $app->pass();
     }
@@ -130,9 +133,33 @@ $unknownRoute = function($unk) use ($delegator) {
     ));
 };
 
+$notFound = function() use ($delegator) {
+    $app = $delegator['app'];
+    $deps = $delegator['deps'];
+
+    $deps = __::find($deps, function($dep) {
+        return $dep['name'] === 'defaults';
+    });
+
+    $require = $deps['require'];
+
+    $app->render('/header.php', array(
+        'title' => 'Not found',
+        'css' => $require['css']
+    ));
+
+    $app->render('404-unk.php');
+
+    $app->render('/footer.php', array(
+        'js' => $require['js']
+    ));
+};
+
 /* Wildcard to catch 404.
  * Always the last route to declare */
-$app->map('/:unk+', $getAsset, $unknownRoute)->via('GET')->name('unknown');
+$app->map(':unk+', $getAsset, $unknownRoute)->via('GET')->name('unknown');
+
+$app->notFound($notFound);
 
 /* mandatory, do not overwrite */
 

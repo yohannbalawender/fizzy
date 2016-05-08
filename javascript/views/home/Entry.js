@@ -10,14 +10,17 @@ define(function(require) {
     var _ = require('underscore');
 
     /* Templates */
-    var PostTpl = require('text!html/Posts.html');
+    var PostTpl = require('text!html/ShortPosts.html');
 
     return Backbone.View.extend({
         className: 'home-main',
 
         template: _.template(PostTpl),
 
-        events: {},
+        events: {
+            'mouseover .avatar': 'onOverAvatar',
+            'mouseout .avatar': 'onOutAvatar'
+        },
 
         initialize: function() {
             this.posts = new Backbone.Collection('posts');
@@ -46,6 +49,18 @@ define(function(require) {
 
         onGetPostsError: function() {
             console.log('Get /posts failed');
+        },
+
+        onOverAvatar: function(evt) {
+            var $elem = $(evt.currentTarget).parent().find('.author');
+            
+            $elem.fadeIn(200);
+        },
+
+        onOutAvatar: function(evt) {
+            var $elem = $(evt.currentTarget).parent().find('.author');
+
+            $elem.fadeOut(200);
         }
     });
 });

@@ -12,9 +12,14 @@
 
 body {
     width: 100%;
-    padding: 0;
-    margin: 0;
+    height: 100%;
+
     font-family: "Oswald", "Open sans", sans-serif;
+    font-size: @font-size;
+
+    > * {
+        width: 100%;
+    }
 }
 
 a {
@@ -22,53 +27,30 @@ a {
     color: @link-color;
 }
 
-header {
-    background: @light-bg;
-    overflow: hidden;
+/* Bootstrap adapter {{{ */
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }
+
+/* }}} */
 
 #banner {
     overflow: hidden;
 
-    div, nav {
-        float: left;
-        padding: @min-gutter;
-    }
-
-    .fizzy-title {
+    .f-header {
         background-color: @app-color;
-        width: 100px;
-        text-align: center;
+        padding: 0 @gutter;
 
-        span {
-            font-size: 21px;
+        .f-title {
+            font-size: @title-font-size * 1.25;
             color: @light-color;
         }
     }
-    
-    :after {
-        .clear_after();
-    }
-}
 
-nav.main-nav {
-    padding: @min-gutter;
-
-    ul {
-        .no_list();
-
-        li {
-            padding: 0 @nav-gutter;
-        }
-
-        a {
-            text-decoration: none;
-            font-size: @title-font-size;
-        }
-
-        span {
-            font-size: @title-font-size * 1.25;
-        }
+    .f-nav {
+        font-size: @title-font-size;
     }
 }
 
@@ -89,8 +71,69 @@ footer {
 
 #app-container {
     min-height: 400px;
+    width: 100%;
+    margin: @gutter 0;
+
+    > * {
+        width: 100%;
+    }
 }
 
-.not-found {
-    padding: 10px;
+/**
+ * Style for short post
+ */
+.posts-container {
+    width: 100%;
+    
+    .short-post-container {
+        padding: @min-gutter;
+
+        border-bottom: 1px solid @light-color;
+        border-right: 1px solid @light-color;
+
+        .img {
+            width: 100%;
+        }
+
+        .info {
+            margin-top: @min-gutter;
+
+            .author-info {
+                .avatar {
+                    width: @avatar-width;
+                    height: @avatar-height;
+
+                    float: left;
+
+                    border-radius: 50%;
+                    border: 3px solid transparent;
+
+                    &:hover {
+                        border: 3px solid @app-color;
+                    }
+                }
+
+                .author {
+                    display: none;
+                    float: left;
+
+                    margin-left: @min-gutter;
+                    margin-top: @avatar-height / 2 - @font-size;
+                }
+
+                .clear_after();
+            }
+
+            .tags {
+                font-size: @font-size * 3 / 4;
+                font-style: italic;
+                text-align: right;
+                color: @grey;
+            }
+
+            .community {
+                text-align: right;
+            }
+        }
+    }
 }

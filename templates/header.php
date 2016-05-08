@@ -111,7 +111,8 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
     <link rel="stylesheet" href="assets/css/home.css">-->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"> -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <?php
         foreach ($css as $file) {
@@ -126,65 +127,8 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
 </head>
 <body class="app">
     <!-- Header -->
-    <!--<header class="site-header site-header-pub">
-    <div class="banner">
-        <div class="family-dropdown">
-            <a href="http://pub.scotch.io" class="brand the-pub current">
-                <img src="/img/logo-pub.png" alt="Scotch.io Logo">
-                <span class="text">
-                    <img src="/img/logo-pub-text-small.png" alt="Scotch Pub Logo">
-                </span>
-            </a>
-            <a href="#" class="toggle-family">
-                <span class="left"></span>
-                <span class="right"></span>
-            </a>
-            <div class="siblings">
-                <a href="http://scotch.io" class="brand scotch-logo">
-                    <img src="/img/logo.png" alt="Scotch Pub Logo">
-                    <span class="text">
-                        <img src="/img/logo-text-small.png" alt="Scotch.io Logo">
-                    </span>
-                </a>
-                <a href="http://school.scotch.io" class="brand school">
-                    <img src="/img/logo-school.png" alt="Scotch Pub Logo">
-                    <span class="text">
-                        <img src="/img/logo-school-text-small.png" alt="Scotch School Logo">
-                    </span>
-                </a>
-            </div>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li>
-                    <a href="http://pub.scotch.io">Posts</a>
-                </li>
-                <li class="separator"></li>
-                <li>
-                    <a href="http://pub.scotch.io/about">About</a>
-                </li>
-                <li>
-                    <a href="http://pub.scotch.io/ideas">Post Ideas</a>
-                </li>
-                <li>
-                    <a href="http://pub.scotch.io/writing-guide">Writing Guide</a>
-                </li>
-                <li class="about-li">
-                    <a href="https://scotch.io/about" class="about">
-                        <span class="iconic iconic-heart"></span>
-                    </a>
-                    <ul>
-                        <li><a href="https://digital.scotch.io">Scotch Digital</a></li>
-                        <li><a href="https://shop.scotch.io">Scotch Store</a></li>
-                        <li><a href="https://scotch-slack.herokuapp.com">Scotch Slack</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    </header>-->
     <header>
-        <div id="banner" class="pure-menu-horizontal">
+        <!--<div id="banner" class="pure-menu-horizontal">
             <div class="fizzy-title">
                 <span class="pure-menu-title">Fizzy</span>
             </div>
@@ -211,11 +155,36 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
                     </li>
                 </ul>
             </nav>
-
-            <div class="Languages">
-                <!-- Put languages here -->
+        </div>-->
+        <nav id="banner">
+            <div class="navbar-header f-header">
+                <a class="navbar-brand f-title" href="#">Fizzy</a>
             </div>
+
+            <ul class="nav navbar-nav f-nav">
+                <li>
+                    <a href="<?php echo ROOT_PATH . 'web'?>">
+                        <span class="fa fa-html5"></span>
+                        &nbsp; Web
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_PATH . 'life'?>">
+                        <span class="fa fa-heart"></span>
+                        &nbsp; Life
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo ROOT_PATH . 'music'?>">
+                        <span class="fa fa-music"></span>
+                        &nbsp; Music
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="Languages">
+            <!-- Put languages here -->
         </div>
     </header>
 
-    <div id="app-container">
+    <div id="app-container" class="container">

@@ -12,7 +12,7 @@ define(function(require) {
         var success = options.success || $.noop;
         var error = options.error || $.noop;
 
-        options.url = model.__url__;
+        options.url = 'req/' + model.__url__;
 
         if (model.id) {
             options.url += '/' + model.id;
@@ -21,7 +21,6 @@ define(function(require) {
         options.success = function() {
             var response;
 
-            /* Todo: with collection, models are not parsed so attributes are raw. */
             success.apply(this, arguments);
 
             response = arguments[0];
