@@ -11,11 +11,13 @@ define(function(require) {
 
     /* Templates */
     var PostTpl = require('text!html/ShortPosts.html');
+    var EmptyPostTpl = require('text!html/EmptyPost.html');
 
     return Backbone.View.extend({
         className: 'home-main',
 
         template: _.template(PostTpl),
+        emptyTemplate: _.template(EmptyPostTpl),
 
         events: {
             'mouseover .avatar': 'onOverAvatar',
@@ -34,9 +36,19 @@ define(function(require) {
         },
 
         render: function() {
-            this.$el.html(this.template({
-                posts: this.posts
-            }));
+            if (!this.posts.isEmpty()) {
+                this.$el.html(this.template({
+                    posts: this.posts
+                }));
+            } else {
+                this.renderEmpty();
+            }
+
+            return this;
+        },
+
+        renderEmpty: function() {
+            this.$el.html(this.emptyTemplate());
 
             return this;
         },

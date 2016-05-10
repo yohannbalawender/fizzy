@@ -125,38 +125,10 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
         }
     ?>
 </head>
-<body class="app">
+<body>
     <!-- Header -->
     <header>
-        <!--<div id="banner" class="pure-menu-horizontal">
-            <div class="fizzy-title">
-                <span class="pure-menu-title">Fizzy</span>
-            </div>
-
-            <nav class="main-nav">
-                <ul class="pure-menu-list">
-                    <li class="pure-menu-item">
-                        <a href="<?php echo ROOT_PATH . 'web'?>">
-                            <span class="fa fa-html5"></span>
-                            &nbsp; Web
-                        </a>
-                    </li>
-                    <li class="pure-menu-item">
-                        <a href="<?php echo ROOT_PATH . 'life'?>">
-                            <span class="fa fa-heart"></span>
-                            &nbsp; Life
-                        </a>
-                    </li>
-                    <li class="pure-menu-item">
-                        <a href="<?php echo ROOT_PATH . 'music'?>">
-                            <span class="fa fa-music"></span>
-                            &nbsp; Music
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>-->
-        <nav id="banner">
+        <nav id="banner" class="navbar-default">
             <div class="navbar-header f-header">
                 <a class="navbar-brand f-title" href="#">Fizzy</a>
             </div>

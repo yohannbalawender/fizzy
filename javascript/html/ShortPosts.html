@@ -13,20 +13,22 @@
         <% var img = post.get('Image') || 'default-fizzy.jpg' %>
         <% var avatar = post.get('Avatar') || 'efferv.jpg' %>
 
-        <div class="pane short-post-container col-md-4">
-            <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
-            <h2><%- title %></h2>
-            <div class="info row">
-                <div class="author-info col-md-5">
-                    <img class="avatar" src="/assets/images/avatars/<%- avatar %>" alt="Avatar" />
-                    <div class="f-hidden author"><%- post.get('Author') %></div>
-                </div>
-                <div class="col-md-7">
-                    <div class="tags">
-                        <%- post.get('Tags') || '-' %>
+        <div class="short-post-container col-md-4">
+            <div class="short-post">
+                <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
+                <div class="info row">
+                    <h2><%- title %></h2>
+                    <div class="author-info col-md-6">
+                        <img class="avatar" src="/assets/images/avatars/<%- avatar %>" alt="Avatar" />
+                        <div class="f-hidden author"><%- post.get('Author') %></div>
                     </div>
-                    <div class="community">
-                        <span class="fa fa-thumbs-o-up"></span>
+                    <div class="col-md-6">
+                        <div class="tags">
+                            <%- post.get('Tags') || '-' %>
+                        </div>
+                        <div class="community">
+                            <span class="fa fa-thumbs-o-up"></span>
+                        </div>
                     </div>
                 </div>
             </div>

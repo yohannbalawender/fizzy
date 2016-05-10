@@ -6,23 +6,91 @@
 /* Margin & Padding */
 /* Style */
 /* Images */
+/* Block length */
 /* Utils factory */
+.navbar-default {
+  background-color: #8cd8d2;
+  border-color: #45d6cb;
+}
+.navbar-default .navbar-brand {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #1f1f1f;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #1f1f1f;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #1f1f1f;
+  background-color: #45d6cb;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #1f1f1f;
+  background-color: #45d6cb;
+}
+.navbar-default .navbar-toggle {
+  border-color: #45d6cb;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #45d6cb;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+  color: #1f1f1f;
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #1f1f1f;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #1f1f1f;
+    background-color: #45d6cb;
+  }
+}
 @font-face {
   font-family: "Open sans";
   src: url('../fonts/open-sans.regular.ttf');
 }
 body {
   width: 100%;
-  height: 100%;
   font-family: "Oswald", "Open sans", sans-serif;
   font-size: 14px;
-}
-body > * {
-  width: 100%;
 }
 a {
   text-decoration: none;
   color: #524c4c;
+}
+.not-found {
+  padding: 20px;
 }
 /* Bootstrap adapter {{{ */
 .row {
@@ -32,33 +100,30 @@ a {
 /* }}} */
 #banner {
   overflow: hidden;
+  background-color: #8cd8d2;
+  font-size: 21px;
 }
 #banner .f-header {
-  background-color: #96cdcd;
   padding: 0 20px;
 }
 #banner .f-header .f-title {
-  font-size: 26.25px;
-  color: #e7e7e7;
-}
-#banner .f-nav {
-  font-size: 21px;
+  font-size: 31.5px;
 }
 footer {
   background-color: #1f1f1f;
-  color: #e7e7e7;
   text-align: center;
+  font-size: 18.2px;
 }
 footer p {
-  padding: 5px;
+  padding: 10px;
 }
 footer * {
   color: #e7e7e7;
 }
 #app-container {
-  min-height: 400px;
+  background-color: #f7f7f7;
   width: 100%;
-  margin: 20px 0;
+  padding: 20px 0;
 }
 #app-container > * {
   width: 100%;
@@ -69,43 +134,55 @@ footer * {
 .posts-container {
   width: 100%;
 }
-.posts-container .short-post-container {
-  padding: 15px;
-  border-bottom: 1px solid #e7e7e7;
-  border-right: 1px solid #e7e7e7;
+.posts-container .empty-post {
+  padding: 20px;
+  text-align: center;
+  font-size: 18.2px;
 }
-.posts-container .short-post-container .img {
+.posts-container .empty-post .fa {
+  font-size: 23.66px;
+}
+.posts-container .short-post-container {
+  background-color: transparent;
+  padding: 15px;
+}
+.posts-container .short-post-container .short-post {
+  background-color: #e7e7e7;
+}
+.posts-container .short-post-container .short-post .img {
   width: 100%;
 }
-.posts-container .short-post-container .info {
-  margin-top: 15px;
+.posts-container .short-post-container .short-post .info {
+  padding: 0 15px 15px 15px;
 }
-.posts-container .short-post-container .info .author-info {
+.posts-container .short-post-container .short-post .info .author-info {
   content: '';
   display: block;
   clear: both;
 }
-.posts-container .short-post-container .info .author-info .avatar {
+.posts-container .short-post-container .short-post .info .author-info .avatar {
   width: 40px;
   height: 40px;
   float: left;
   border-radius: 50%;
   border: 3px solid transparent;
 }
-.posts-container .short-post-container .info .author-info .avatar:hover {
-  border: 3px solid #96cdcd;
+.posts-container .short-post-container .short-post .info .author-info .avatar:hover {
+  border: 3px solid #8cd8d2;
 }
-.posts-container .short-post-container .info .author-info .author {
+.posts-container .short-post-container .short-post .info .author-info .author {
   display: none;
   float: left;
   margin-left: 15px;
   margin-top: 6px;
+  text-overflow: ellipsis;
 }
-.posts-container .short-post-container .info .tags {
+.posts-container .short-post-container .short-post .info .tags {
+  font-size: 14px;
   font-style: italic;
   text-align: right;
   color: #999999;
 }
-.posts-container .short-post-container .info .community {
+.posts-container .short-post-container .short-post .info .community {
   text-align: right;
 }
