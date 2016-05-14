@@ -5,7 +5,7 @@
 require(['common'], function() {
     'use strict';
 
-    require(['routers/home'], function(Router) {
+    require(['routers/Post'], function(Router) {
         new Router();
 
         Backbone.history.start();

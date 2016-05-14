@@ -10,7 +10,7 @@ abstract class Model {
     protected static $keys;
 
     protected $_isFetched = false;
-    protected $attr;
+    protected $attr = array();
     public $stackErrors;
 
     public function __construct() {
@@ -59,7 +59,7 @@ abstract class Model {
         $params = array();
         $exec = array();
 
-        foreach ($this->attr as $key => $value) {
+        foreach ($this->getAttrs() as $key => $value) {
             $param = ':'.$key;
             $params[] = $key.' = '.$param;
 
@@ -70,11 +70,11 @@ abstract class Model {
     }
 
     public function toJson() {
-        $json = json_encode($this->attr);
+        $json = $this->getAttrs();
 
         $json['__url__'] = static::$name;
 
-        return $json;
+        return json_encode($json);
     }
 
     public function getAttrs() {

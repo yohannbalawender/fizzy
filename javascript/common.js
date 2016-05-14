@@ -5,5 +5,5 @@
 define('common', function() {
     'use strict';
 
-    require(['core']);    
+    require(['core']);
 });

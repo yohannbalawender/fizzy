@@ -118,7 +118,7 @@ footer p {
   padding: 10px;
 }
 footer * {
-  color: #e7e7e7;
+  color: white;
 }
 #app-container {
   background-color: #f7f7f7;
@@ -147,7 +147,7 @@ footer * {
   padding: 15px;
 }
 .posts-container .short-post-container .short-post {
-  background-color: #e7e7e7;
+  background-color: #dedede;
 }
 .posts-container .short-post-container .short-post .img {
   width: 100%;

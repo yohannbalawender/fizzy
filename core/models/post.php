@@ -11,9 +11,9 @@ class Post extends Model {
 
     protected static $keys = array('Id');
 
-    protected $attr;
+    protected $attr = array();
 
-    public function __construct($attrs) {
+    public function __construct($attrs = array()) {
         if (!is_array($attrs)) {
             throw new Exception("Expected an array to define post model attributes.");
         }

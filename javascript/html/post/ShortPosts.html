@@ -15,7 +15,9 @@
 
         <div class="short-post-container col-md-4">
             <div class="short-post">
-                <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
+                <a class="move-post" href="p/<%- post.get('Id') %>" data-bypass>
+                    <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
+                </a>
                 <div class="info row">
                     <h2><%- title %></h2>
                     <div class="author-info col-md-6">

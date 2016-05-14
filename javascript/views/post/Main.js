@@ -10,11 +10,11 @@ define(function(require) {
     var _ = require('underscore');
 
     /* Templates */
-    var PostTpl = require('text!html/ShortPosts.html');
-    var EmptyPostTpl = require('text!html/EmptyPost.html');
+    var PostTpl = require('text!html/post/ShortPosts.html');
+    var EmptyPostTpl = require('text!html/post/EmptyPost.html');
 
     return Backbone.View.extend({
-        className: 'home-main',
+        className: 'post-main',
 
         template: _.template(PostTpl),
         emptyTemplate: _.template(EmptyPostTpl),

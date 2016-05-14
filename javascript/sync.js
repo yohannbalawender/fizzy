@@ -12,9 +12,9 @@ define(function(require) {
         var success = options.success || $.noop;
         var error = options.error || $.noop;
 
-        options.url = 'req/' + model.__url__;
+        options.url = '/req/' + model.__url__;
 
-        if (model.id) {
+        if (!_.isUndefined(model.id)) {
             options.url += '/' + model.id;
         }
 

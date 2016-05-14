@@ -6,6 +6,7 @@ require 'ext/underscore-php/underscore.php';
 require 'core/fdate.php';
 
 require_once 'core/utils.php';
+require_once 'core/error.php';
 require_once 'core/query.php';
 require_once 'core/models/post.php';
 require_once 'core/collections/posts.php';
@@ -51,45 +52,94 @@ $delegator = array(
     'deps' => $deps
 );
 
-/* home */
-$app->get('/', function () use ($delegator) {
+/* Requests */
+$app->group('/req', function () use ($delegator) {
     $app = $delegator['app'];
-    $deps = $delegator['deps'];
 
-    $deps = Utils::getAllDeps($deps, 'home');
+    /* Posts list */
+    $app->map('/posts(/(:id))', function($id = null) use ($delegator) {
+        $app = $delegator['app'];
 
-    $require = $deps['require'];
+        $posts = new Posts();
 
-    $app->render('/header.php', array(
-        'title' => 'Hello',
-        'css' => $require['css']
-    ));
+        $conds = '';
+        $values = array();
 
-    $app->render('/footer.php', array(
-        'js' => $require['js'])
-    );
-})->name('home');
+        if (!is_null($id)) {
+            $conds = 'WHERE Id = :id';
 
-$app->map('/req/posts(/(:id))', function($id = null) use ($delegator) {
+            $values = array('id' => $id);
+        }
+
+        $posts->fetch($conds, $values);
+
+        $app->response->setStatus(200);
+        $app->response->write($posts->toJson());
+    })->via('GET', 'POST')->name('req-posts');
+
+    /* Single post */
+    $app->map('/post/:id', function ($id = null) use ($delegator) {
+        $app = $delegator['app'];
+
+        /* Currently useless */
+        if ($id == null) {
+            $error = new FError('Cannot get post with unknown id.');
+
+            $app->response->setStatus(400);
+            $app->response->write($error->getResponse('json'));
+        }
+
+        $post = new Post();
+
+        $post->fetch($id);
+
+        $app->response->setStatus(200);
+        $app->response->write($post->toJson());
+    })->via('GET', 'POST')->name('req-post');
+});
+
+/* Posts */
+$app->group('/', function() use ($delegator) {
     $app = $delegator['app'];
-    $deps = $delegator['deps'];
 
-    $posts = new Posts();
+    $app->get('', function () use ($delegator) {
+        $app = $delegator['app'];
+        $deps = $delegator['deps'];
 
-    $conds = '';
-    $values = array();
+        $deps = Utils::getAllDeps($deps, 'home');
 
-    if (!is_null($id)) {
-        $conds = 'WHERE Id = :id';
+        $require = $deps['require'];
 
-        $values = array('id' => $id);
-    }
+        $app->render('/header.php', array(
+            'title' => 'Hello',
+            'css' => $require['css']
+        ));
 
-    $posts->fetch($conds, $values);
+        $app->render('/footer.php', array(
+            'js' => $require['js'])
+        );
+    })->name('home');
 
-    echo $posts->toJson();
-})->via('GET', 'POST')->name('posts');
+    $app->get('posts(/)', function () use ($delegator) {
+        $app = $delegator['app'];
+        $deps = $delegator['deps'];
 
+        $deps = Utils::getAllDeps($deps, 'home');
+
+        $require = $deps['require'];
+
+        $app->render('/header.php', array(
+            'title' => 'Hello',
+            'css' => $require['css']
+        ));
+
+        $app->render('/footer.php', array(
+            'js' => $require['js'])
+        );
+    })->name('home');
+});
+
+/* Default */
 $getAsset = function($route) use ($delegator) {
     $app = $delegator['app'];
 

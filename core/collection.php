@@ -8,7 +8,7 @@ abstract class Collection {
 
     /* Must be overriden */
     protected $_isFetched = false;
-    public $models;
+    public $models = array();
 
     public $order = null;
     public $offset = null;

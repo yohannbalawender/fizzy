@@ -22,6 +22,8 @@ define('model', ['backbone', 'underscore'], function(Backbone, _) {
     var model = function(fullName, attributes, options) {
         this.__url__ = fullName;
 
+        this.id = attributes.id;
+
         backboneModel.call(this, attributes, options);
     }
 

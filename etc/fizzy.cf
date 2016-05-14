@@ -18,11 +18,5 @@
             "js": ["home"],
             "css": []
         }
-    }, {
-        "name": "posts",
-        "require": {
-            "js": ["posts"],
-            "css": []
-        }
     }]
 }
