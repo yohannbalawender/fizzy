@@ -8,6 +8,12 @@
 /* Images */
 /* Block length */
 /* Utils factory */
+.pull-left {
+  float: left;
+}
+.f-hidden {
+  display: none;
+}
 .navbar-default {
   background-color: #8cd8d2;
   border-color: #45d6cb;
@@ -92,6 +98,10 @@ a {
 .not-found {
   padding: 20px;
 }
+.back {
+  font-size: 16.1px;
+  margin-bottom: 20px;
+}
 /* Bootstrap adapter {{{ */
 .row {
   margin-right: 0;
@@ -129,60 +139,94 @@ footer * {
   width: 100%;
 }
 /**
- * Style for short post
+ * Style for post
  */
-.posts-container {
-  width: 100%;
+.post-single {
+  padding: 20px;
 }
-.posts-container .empty-post {
+.empty-post {
   padding: 20px;
   text-align: center;
   font-size: 18.2px;
 }
-.posts-container .empty-post .fa {
+.empty-post .fa {
   font-size: 23.66px;
+}
+.posts-container {
+  width: 100%;
 }
 .posts-container .short-post-container {
   background-color: transparent;
   padding: 15px;
 }
 .posts-container .short-post-container .short-post {
-  background-color: #dedede;
+  background-color: #f1ecf1;
 }
 .posts-container .short-post-container .short-post .img {
   width: 100%;
 }
-.posts-container .short-post-container .short-post .info {
+.posts-container .short-post-container .short-post .info-content {
   padding: 0 15px 15px 15px;
+  /* Author */
 }
-.posts-container .short-post-container .short-post .info .author-info {
+.posts-container .short-post-container .short-post .info-content .author-info:after {
   content: '';
   display: block;
   clear: both;
 }
-.posts-container .short-post-container .short-post .info .author-info .avatar {
+.posts-container .short-post-container .short-post .info-content .author-info .avatar {
   width: 40px;
   height: 40px;
   float: left;
   border-radius: 50%;
   border: 3px solid transparent;
 }
-.posts-container .short-post-container .short-post .info .author-info .avatar:hover {
+.posts-container .short-post-container .short-post .info-content .author-info .avatar:hover {
   border: 3px solid #8cd8d2;
 }
-.posts-container .short-post-container .short-post .info .author-info .author {
-  display: none;
+.posts-container .short-post-container .short-post .info-content .author-info .author {
   float: left;
   margin-left: 15px;
   margin-top: 6px;
   text-overflow: ellipsis;
 }
-.posts-container .short-post-container .short-post .info .tags {
+.posts-container .short-post-container .short-post .info-content .tags {
   font-size: 14px;
   font-style: italic;
   text-align: right;
   color: #999999;
 }
-.posts-container .short-post-container .short-post .info .community {
+.posts-container .short-post-container .short-post .info-content .community {
   text-align: right;
+}
+.posts-container .post-full-content h2 {
+  margin: 20px 0;
+}
+.posts-container .post-full-content .post-info {
+  margin: 20px 0;
+}
+.posts-container .post-full-content .post-info > * {
+  float: left;
+  padding: 0 15px;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #1f1f1f;
+}
+.posts-container .post-full-content .post-info > *:first-child {
+  padding-left: 0;
+  border-left: 1px solid transparent;
+}
+.posts-container .post-full-content .post-info > *:last-child {
+  border-right: 1px solid transparent;
+}
+.posts-container .post-full-content .post-info > * span.fa {
+  color: #8cd8d2;
+}
+.posts-container .post-full-content .post-info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.posts-container .post-full-content .post-content {
+  margin: 20px 0;
+  font-size: 18.2px;
 }

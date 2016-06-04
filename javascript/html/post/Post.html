@@ -2,8 +2,40 @@
     Template for posts
 -->
 
+<% var title = post.get('Title') || 'Unknown'; %>
+<% var avatar = post.get('Avatar') || 'efferv.jpg' %>
+<% var img = post.get('Image') || 'default-fizzy.jpg' %>
+
+<div class="back">
+    <a href="posts/" data-bypass>
+        <span class="fa fa-hand-o-left"></span>&nbsp; Back to home
+    </a>
+</div>
 <div class="posts-container">
-    <div class="post-content">
-        <%- post.get('Content') %>        
+    <div class="post-full-content">
+        <h2><%- title %></h2>
+
+        <div class="post-info">
+            <div>
+                <span class="fa fa-user"></span>
+                &nbsp; By <%- post.get('Author') %>
+            </div>
+            <div>
+                <span class="fa fa-clock-o"></span>
+                &nbsp; <%- post.get('ModificationDate') %>
+            </div>
+            <div>
+                <span class="fa fa-tags"></span>
+                &nbsp; <%- post.get('Tags') || '-' %>
+            </div>
+        </div>
+        
+        <div class="post-img">
+            <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
+        </div>
+
+        <div class="post-content">
+            <%- post.get('Content') %>
+        </div>
     </div>
 </div>

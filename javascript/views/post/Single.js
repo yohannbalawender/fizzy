@@ -12,17 +12,21 @@ define(function(require) {
     /* Templates */
     var PostTpl = require('text!html/post/Post.html');
     var EmptyPostTpl = require('text!html/post/EmptyPost.html');
+    var ErrorPostTpl = require('text!html/post/ErrorPost.html');
 
     return Backbone.View.extend({
         className: 'post-single',
 
         template: _.template(PostTpl),
         emptyTemplate: _.template(EmptyPostTpl),    
+        errorTemplate: _.template(ErrorPostTpl),    
 
-        initialize: function() {
-            this.post = new Backbone.Model('post');
+        initialize: function(options) {
+            this.post = new Backbone.Model('post', {
+                id: options.id
+            });
 
-            this.listenTo(this.posts, {
+            this.listenTo(this.post, {
                 'read:success': this.onGetPostSuccess,
                 'read:error': this.onGetPostError,
             });
@@ -48,6 +52,12 @@ define(function(require) {
             return this;
         },
 
+        renderError: function() {
+            this.$el.html(this.errorTemplate());
+
+            return this;
+        },
+
         onGetPostSuccess: function() {
             console.log('Get /posts succeeded');
 
@@ -56,6 +66,8 @@ define(function(require) {
 
         onGetPostError: function() {
             console.log('Get /posts failed');
+
+            this.renderError();
         }
     });
 });

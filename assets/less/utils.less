@@ -1,13 +1,27 @@
 /* Utils factory */
 
 .clear_after() {
-    content: '';
-    display: block;
-    clear: both;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 }
 
 .no_list() {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull_left() {
+    float: left;
+}
+
+.f-hidden {
+    display: none;
 }

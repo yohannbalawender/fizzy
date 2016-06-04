@@ -23,8 +23,10 @@ define(function(require) {
             this.postsList();
         },
 
-        post: function() {
-            this.show(new Single());
+        post: function(id) {
+            this.show(new Single({
+                id: id
+            }));
         },
 
         postsList: function() {
@@ -32,7 +34,7 @@ define(function(require) {
         },
 
         show: function(view) {
-            $('#app-container').append(view.render().el);
+            $('#app-container').html(view.render().el);
         }
 
     });

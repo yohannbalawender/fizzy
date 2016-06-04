@@ -2,7 +2,7 @@
  * Backbone core module
  */
 
-define('core', ['backbone', 'sync', 'model', 'collection'], function(Backbone, sync, parse) {
+define('core', ['backbone', 'sync', 'model', 'collection', 'render'], function(Backbone, sync) {
     'use strict';
 
     var backboneSync = Backbone.sync;
@@ -60,4 +60,26 @@ define('collection', ['backbone', 'underscore'], function(Backbone, _) {
     Backbone.Collection = collection;
 
     return collection;
+});
+
+define('render', ['backbone', 'jquery'], function(Backbone, $) {
+    'use strict';
+
+    var backboneRender = Backbone.View.prototype.render;
+
+    var render = function() {
+        backboneRender();
+
+        $('a[data-bypass]').click(function(evt) {
+            evt.preventDefault();
+
+            console.log('click');
+        });
+
+        return this;
+    };
+
+    Backbone.View.prototype.render = render;
+
+    return render;
 });

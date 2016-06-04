@@ -2,8 +2,8 @@
  * Common module
  */
 
-define('common', function() {
+define('common', function(require) {
     'use strict';
 
-    require(['core']);
+    require(['backbone']);
 });
