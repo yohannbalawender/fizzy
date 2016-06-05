@@ -58,6 +58,9 @@ define('backbone', function(require) {
     backboneCollection = Backbone.Collection;
 
     parse = function(resp, options) {
+        /* Remove "url" property in resp, which is not a model but interpreted as by Backbone */
+        delete resp['__url__'];
+        
         if (!_.isArray(resp)) {
             return _.map(resp);
         }
