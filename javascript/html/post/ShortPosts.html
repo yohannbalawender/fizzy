@@ -18,19 +18,13 @@
                 <a class="move-post" href="p/<%- post.get('Id') %>" data-bypass>
                     <img class="img" src="/assets/upload/posts/<%- img %>" alt="<%- title %>" />
                 </a>
-                <div class="info-content row">
+                <div class="info-content">
                     <h2><%- title %></h2>
-                    <div class="author-info col-md-6">
-                        <img class="avatar" src="/assets/images/avatars/<%- avatar %>" alt="Avatar" />
-                        <div class="f-hidden author"><%- post.get('Author') %></div>
+                    <div class="tags">
+                        <%- post.get('Tags') || '-' %>
                     </div>
-                    <div class="col-md-6">
-                        <div class="tags">
-                            <%- post.get('Tags') || '-' %>
-                        </div>
-                        <div class="community">
-                            <span class="fa fa-thumbs-o-up"></span>
-                        </div>
+                    <div class="community">
+                        <span class="fa fa-thumbs-o-up"></span>
                     </div>
                 </div>
             </div>
