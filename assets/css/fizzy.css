@@ -193,14 +193,32 @@ footer * {
 .posts-container .short-post-container .short-post .info-content .tags {
   font-size: 14px;
   font-style: italic;
-  text-align: right;
   color: #999999;
 }
 .posts-container .short-post-container .short-post .info-content .community {
   text-align: right;
 }
+.posts-container .short-post-container .short-post .info-content .community .pop-0 {
+  color: #f1c40f;
+}
+.posts-container .short-post-container .short-post .info-content .community .pop-1 {
+  color: #f39c12;
+}
+.posts-container .short-post-container .short-post .info-content .community .pop-2 {
+  color: #e67e22;
+}
+.posts-container .short-post-container .short-post .info-content .community .pop-3 {
+  color: #d35400;
+}
+.posts-container .short-post-container .short-post .info-content .community .pop-4 {
+  color: #c0392b;
+}
+.posts-container .short-post-container .short-post .info-content .community .pop-5 {
+  color: #ff0000;
+}
 .posts-container .post-full-content h2 {
   margin: 20px 0;
+  font-size: 36.4px;
 }
 .posts-container .post-full-content .post-info {
   margin: 20px 0;

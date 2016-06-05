@@ -152,12 +152,18 @@ footer {
                 .tags {
                     font-size: @font-size;
                     font-style: italic;
-                    text-align: right;
                     color: @grey;
                 }
 
                 .community {
                     text-align: right;
+
+                    .pop-0 { color: #f1c40f; }
+                    .pop-1 { color: #f39c12; }
+                    .pop-2 { color: #e67e22; }
+                    .pop-3 { color: #d35400; }
+                    .pop-4 { color: #c0392b; }
+                    .pop-5 { color: #ff0000; }
                 }
             }
         }
@@ -166,6 +172,7 @@ footer {
     .post-full-content {
         h2 {
             margin: @gutter 0;
+            font-size: @large-font-size * 2;
         }
 
         .post-info {

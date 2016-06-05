@@ -13,6 +13,8 @@
         <% var img = post.get('Image') || 'default-fizzy.jpg' %>
         <% var avatar = post.get('Avatar') || 'efferv.jpg' %>
 
+        <% var colorClass = Math.min(Math.floor(post.get('Popularity') % 100), 5) %>
+
         <div class="short-post-container col-md-4">
             <div class="short-post">
                 <a class="move-post" href="p/<%- post.get('Id') %>" data-bypass>
@@ -21,10 +23,12 @@
                 <div class="info-content">
                     <h2><%- title %></h2>
                     <div class="tags">
+                        <span class="fa fa-tags"></span>
                         <%- post.get('Tags') || '-' %>
                     </div>
                     <div class="community">
-                        <span class="fa fa-thumbs-o-up"></span>
+                        <span class="fa fa-thumbs-o-up" data-toggle="tooltip" title="Like it"></span>
+                        <span class="fa fa-star pop-<%= colorClass %>"></span>
                     </div>
                 </div>
             </div>
