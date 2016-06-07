@@ -130,7 +130,7 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:1457819669,byc:0,owlid
     <header>
         <nav id="banner" class="navbar-default">
             <div class="navbar-header f-header">
-                <a class="navbar-brand f-title" href="#">Fizzy</a>
+                <a class="navbar-brand f-title" href="/" data-bypass>Fizzy</a>
             </div>
 
             <ul class="nav navbar-nav f-nav">
